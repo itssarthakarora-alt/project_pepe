@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from pepecards.mobi/register.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Nov 2026 06:08:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepecards Register | Create Pepecards Account | pepecards signup</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+
+    <meta name="description" content="Create your pepecards account | pepecards register | pepecard signup | official pepecards registration">
+    <meta name="tagline" content="Pepecards — official pepecard login and pepe cc shop. Access your pepecards account instantly.">
+    <meta name="keywords" content="pepecards register, pepecards signup, pepecard account, create pepecards account">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://pepecards.mobi/register.php">
+    <meta property="og:title" content="Pepecards Register | Create Account">
+    <meta property="og:description" content="Create your Pepecards account — official pepecards registration">
+    <meta property="og:url" content="https://pepecards.mobi/register.php">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Pepecards">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://pepecards.mobi/style.css?v=2">
+</head>
+
+<body class="register-page">
+    <div class="login-container">
+        <!-- Left Side: Branding/Welcome -->
+        <div class="login-left">
+            <div class="branding">
+                <!-- Using the generated logo here -->
+                <img src="https://pepecards.mobi/image/rectangle-logo.png" alt="Pepe Card Logo" class="brand-logo">
+                <h1>JOIN PEPECARDS</h1>
+            </div>
+        </div>
+
+        <!-- Right Side: Login Form -->
+        <div class="login-right">
+            <div class="language-selector">
+                <i class="fa-solid fa-globe"></i>
+            </div>
+
+            <form class="login-form" method="POST" action="https://pepecards.mobi/register.php">
+                                <div class="input-group">
+                    <label for="username"><span>|</span> Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password"><span>|</span> Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <i class="fa-solid fa-eye-slash toggle-password"></i>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="quantum-password"><span>|</span> Secondary Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="quantum-password" name="quantum_password"
+                            placeholder="Enter secondary password" required>
+                        <i class="fa-solid fa-eye-slash toggle-password"></i>
+                    </div>
+                </div>
+
+                <div class="captcha-group">
+                    <span class="captcha-question">6 - 3 = ?</span>
+                    <input type="text" placeholder="Equals?" class="captcha-input">
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-login">REGISTER</button>
+                    <a href="https://pepecards.mobi/" class="btn btn-register"
+                        style="text-align: center; text-decoration: none; display: block;">LOGIN</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const quantumPassword = document.getElementById('quantum-password').value;
+
+            if (password === quantumPassword) {
+                e.preventDefault();
+                alert('Quantum Password must be different from the primary Password.');
+            }
+        });
+
+        // Toggle Password Visibility
+        document.querySelectorAll('.toggle-password').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.classList.remove('fa-eye-slash');
+                    this.classList.add('fa-eye');
+                } else {
+                    input.type = 'password';
+                    this.classList.remove('fa-eye');
+                    this.classList.add('fa-eye-slash');
+                }
+            });
+        });
+    </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"c5abb66b9acb4d019c6d43847294e537","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+
+
+<!-- Mirrored from pepecards.mobi/register.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Nov 2026 06:08:57 GMT -->
+</html>

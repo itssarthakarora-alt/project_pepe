@@ -1,0 +1,840 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0b0f0b;
+    /* Fallback dark bg */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: url('image/image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Add an overlay to darken the background */
+    position: relative;
+    z-index: 0;
+}
+
+body.register-page {
+    background-image: url('image/image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.register-page .login-left {
+    background-image: url('image/image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+/* Login Container */
+.login-container {
+    display: flex;
+    width: 900px;
+    max-width: 100%;
+    background-color: #fff;
+    border-radius: 4px;
+    /* Slightly rounded corners */
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    min-height: 500px;
+}
+
+/* Left Side - Branding */
+.login-left {
+    flex: 1;
+    position: relative;
+    background-image: url('image/image.png');
+    /* Or use a different branding image if desired, using same bg for consistency */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Create a darker overlay specifically for the left panel logic if needed, 
+       but the reference shows the left side is transparent/part of the background or has the image directly.
+       Let's assume the container on the left is transparent to show body bg, OR has the image set again.
+       Looking at the ref, it looks like a card on top of a background. 
+       The left side of the card has the branding. */
+    overflow: hidden;
+}
+
+.login-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    /* Darken the left side image */
+}
+
+.branding {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+}
+
+.brand-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.branding h1 {
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Right Side - Form */
+.login-right {
+    flex: 1;
+    background-color: #fff;
+    padding: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.language-selector {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #555;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Form Styles */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: #556b2f;
+    /* Dark olive green color for labels */
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.input-group label span {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #4CAF50;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Form Actions (Remember Me / Forgot PW) */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #333;
+    position: relative;
+    padding-left: 25px;
+    /* Space for custom checkmark */
+    user-select: none;
+}
+
+/* Custom Checkbox */
+.remember-me input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+    border-radius: 3px;
+}
+
+.remember-me:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+.remember-me input:checked~.checkmark {
+    background-color: #4CAF50;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.remember-me input:checked~.checkmark:after {
+    display: block;
+}
+
+.remember-me .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+.forgot-password {
+    color: #4CAF50;
+    /* Green color */
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Captcha */
+.captcha-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.captcha-question {
+    font-weight: 500;
+    color: #333;
+    font-size: 1rem;
+}
+
+.captcha-input {
+    width: 120px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-login {
+    background-color: #4CAF50;
+    /* Green */
+    color: white;
+}
+
+.btn-register {
+    background-color: #000;
+    /* Black */
+    color: white;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    /* REAL ROOT CAUSE FIX:
+       body is display:flex (row by default).
+       On desktop: login-container + footer sit in a row — fine because container is wide.
+       On mobile: container takes ~75% width, footer text sits in remaining 25% = BLACK GAP.
+       Fix: make body a flex COLUMN, remove padding, fill full width */
+    body {
+        flex-direction: column;
+        padding: 0;
+        align-items: stretch;
+        justify-content: flex-start;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    body::before {
+        display: none;
+    }
+
+    /* Container: full width, stacked vertically */
+    .login-container {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: hidden;
+    }
+
+    /* Left branding panel: top banner, full width, fixed height */
+    .login-left {
+        flex: none;
+        width: 100%;
+        min-height: 220px;
+        height: 220px;
+    }
+
+    .branding h1 {
+        font-size: 2rem;
+        letter-spacing: 3px;
+    }
+
+    .brand-logo {
+        width: 100px;
+        margin-bottom: 12px;
+    }
+
+    /* Right form panel: full width, fills rest of screen */
+    .login-right {
+        width: 100%;
+        flex: 1;
+        padding: 30px 20px 40px 20px;
+        box-sizing: border-box;
+    }
+
+    /* Prevent iOS zoom on input focus */
+    .input-group input,
+    .captcha-input {
+        font-size: 16px;
+    }
+
+    /* Hide SEO footer on mobile — prevents black gap on right side */
+    footer.seo-footer {
+        display: none;
+    }
+}
+
+/* Belling Page Styles */
+.belling-page {
+    background-image: none !important;
+    /* Override global body bg */
+    background-color: #fff;
+    display: block;
+    /* Override global flex formatting on body */
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.belling-page::before {
+    display: none !important;
+    /* Remove global overlay */
+}
+
+/* Top Alert Bar */
+.top-alert-bar {
+    background-color: #008000;
+    /* Green */
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.alert-link {
+    color: #fff;
+    /* Or a slightly lighter orange/yellow if needed, but image shows green/white */
+    text-decoration: underline;
+    color: #ff9800;
+    /* Goldish text for link maybe? Image looks orange-ish */
+}
+
+/* Main Header */
+.main-header {
+    background-color: #fcfcfc;
+    /* Very light grey/white */
+    border-bottom: 1px solid #ddd;
+    padding: 10px 40px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-left {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.time-display {
+    color: #555;
+}
+
+.user-greeting {
+    color: #333;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 0.9rem;
+}
+
+.balance-display {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+.recharge-total {
+    color: #777;
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+.btn-add-funds {
+    background-color: #558b4f;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    text-transform: lowercase;
+}
+
+.cart-link,
+.logout-link {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
+
+.lang-globe {
+    color: #333;
+    cursor: pointer;
+}
+
+/* Page Content */
+.belling-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2rem;
+    color: #1f2937;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    color: #2c3e50;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #4CAF50;
+}
+
+/* Redeem Section */
+.redeem-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 60px;
+}
+
+.redeem-label {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #333;
+}
+
+.redeem-label span {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.redeem-input {
+    padding: 10px 15px;
+    width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+}
+
+.btn-redeem {
+    background-color: #558b4f;
+    /* Muted Green */
+    color: white;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Crypto Grid */
+.crypto-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.crypto-card {
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 30px;
+    width: 380px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.crypto-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.crypto-icon {
+    font-size: 2.5rem;
+}
+
+.crypto-icon.btc {
+    color: #f7931a;
+}
+
+.crypto-icon.ltc {
+    color: #345d9d;
+}
+
+.crypto-icon.usdt {
+    color: #26a17b;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.usdt-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.usdt-label .crypto-network {
+    font-size: 0.8rem;
+    color: #777;
+    font-weight: normal;
+}
+
+.crypto-name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #555;
+    font-family: sans-serif;
+    /* Try to match the bold condensed look if possible */
+}
+
+.wallet-address {
+    background: #f0f0f0;
+    padding: 12px;
+    font-size: 0.9rem;
+    color: #555;
+    word-break: break-all;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.qr-code-placeholder {
+    margin-bottom: 20px;
+    font-size: 150px;
+    /* Placeholder icon size */
+    color: #000;
+    line-height: 1;
+}
+
+.crypto-details {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 0 10px;
+    color: #333;
+}
+
+.detail-value {
+    font-weight: bold;
+    color: #333;
+}
+
+.detail-value small {
+    font-size: 0.8em;
+    color: #777;
+}
+
+.btn-update-recharge {
+    background-color: #558b4f;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 80%;
+    /* Button is not full width in screenshot */
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Info Footer */
+.info-footer {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.warning-text {
+    color: #ff3333;
+    /* Bright red */
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.info-text p {
+    color: #444;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.main-footer {
+    background-color: #0b140c;
+    /* Very dark green/black */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    border-top: 1px solid #1a2e1c;
+}
+
+/* ============================
+   BELLING PAGE MOBILE STYLES
+   ============================ */
+@media (max-width: 768px) {
+    /* Header */
+    .main-header {
+        padding: 10px 15px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+
+    .header-left {
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 0.8rem;
+    }
+
+    .header-right {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 0.8rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Belling Content */
+    .belling-content {
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+
+    .page-title {
+        font-size: 1.4rem;
+        margin-bottom: 24px;
+    }
+
+    /* Redeem Section */
+    .redeem-section {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 30px;
+        align-items: stretch;
+    }
+
+    .redeem-input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .btn-redeem {
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* Crypto Grid */
+    .crypto-grid {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+        margin-bottom: 30px;
+    }
+
+    .crypto-card {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    .wallet-address {
+        font-size: 0.78rem;
+        word-break: break-all;
+        padding: 10px;
+    }
+
+    .qr-code-placeholder {
+        font-size: 100px;
+    }
+
+    .btn-update-recharge {
+        width: 100%;
+    }
+
+    /* Warning / Info Footer */
+    .warning-text {
+        font-size: 1.2rem;
+    }
+
+    .info-text p {
+        font-size: 0.88rem;
+    }
+}
+
+/* Visually hidden but readable by SEO crawlers */
+.seo-hidden-content {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
